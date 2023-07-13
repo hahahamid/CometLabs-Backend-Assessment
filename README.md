@@ -199,5 +199,3 @@ Parameters:
 - source
 - compilerId
 
-![img](screenshots/Screenshot(14).png)
-
