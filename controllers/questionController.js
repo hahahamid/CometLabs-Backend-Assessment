@@ -1,6 +1,7 @@
 const Question = require("../models/Question");
 var axios = require("axios");
-const authMiddleware = require("../middleware/authMiddleware"); 
+
+// function to display all the problems directly from Sphere Online API
 
 async function getAllQuestions(req, res) {
   try {
@@ -15,11 +16,13 @@ async function getAllQuestions(req, res) {
         // console.log(response.data);
       });
   } catch (error) {
+    
     console.error("Error getting questions:", error);
+    
+    // error message 
     res.status(500).send({ message: "Internal server error" });
   }
 }
-
 
 
 module.exports = { getAllQuestions };

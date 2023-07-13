@@ -1,5 +1,8 @@
 const axios = require("axios");
 
+
+// Function to display message based on the result 
+
 async function submissionMessage(response, req, res) {
   const { data } = response;
   if (data.result === "OK") {
@@ -8,6 +11,9 @@ async function submissionMessage(response, req, res) {
     res.send({ message: "Solution is wrong", error: data.error });
   }
 }
+
+
+// Function to get submission 
 
 async function submitSolution(req, res) {
   await axios
@@ -22,7 +28,9 @@ async function submitSolution(req, res) {
       }
     )
     .then(async (response) => {
+      
       // sent code to sphere then get the result
+
       await axios
         .get(
           process.env.SPHERE_SUBMISSIONS_URL +

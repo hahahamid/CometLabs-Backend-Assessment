@@ -9,6 +9,7 @@ const solutionRoutes = require("./routes/solutionRoutes");
 const authMiddleware = require(".//middleware/authMiddleware");
 const axios = require("axios");
 
+
 require("dotenv").config();
 
 const app = express();
@@ -29,7 +30,9 @@ mongoose
     console.log(err.message);
   });
 
-// Set up routes
+
+// Setting Up Routes
+
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/questions", questionRoutes);
@@ -38,12 +41,16 @@ app.use("/solutions", solutionRoutes);
 
 
 app.get("/", authMiddleware, (req, res) => {
-  // Greeting
+  
+  // Greeting Message on the homepage with name and the role 
+
   res.send(`Hello ${req.user.name}! You are a ${req.user.role}.`);
+
 });
 
 
-// Start the server
+// Starting The Server
+
 app.listen(process.env.PORT, () => {
   console.log(`Server started on ${process.env.PORT}`);
 });
